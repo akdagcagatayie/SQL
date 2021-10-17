@@ -7,8 +7,6 @@
 
 ## Ödev 1
 
-Aşağıdaki sorgu senaryolarını dvdrental örnek veri tabanı üzerinden gerçekleştiriniz.
-
 <br>
 
 > 1.film tablosunda bulunan title ve description sütunlarındaki verileri sıralayınız. 
@@ -44,9 +42,7 @@ Aşağıdaki sorgu senaryolarını dvdrental örnek veri tabanı üzerinden ger�
 
 ## Ödev-2
 
-Aşağıdaki sorgu senaryolarını dvdrental örnek veri tabanı üzerinden gerçekleştiriniz.
-
-
+<br>
 
 >1.film tablosunda bulunan tüm sütunlardaki verileri replacement cost değeri 12.99 dan büyük eşit ve 16.99 küçük olma koşuluyla sıralayınız ( BETWEEN - AND yapısını kullanınız.)
 
@@ -71,6 +67,8 @@ Aşağıdaki sorgu senaryolarını dvdrental örnek veri tabanı üzerinden ger�
 <hr>
 
 ## Ödev-3
+
+<br>
 
 >1.country tablosunda bulunan country sütunundaki ülke isimlerinden 'A' karakteri ile başlayıp 'a' karakteri ile sonlananları sıralayınız.
 
@@ -100,6 +98,8 @@ Aşağıdaki sorgu senaryolarını dvdrental örnek veri tabanı üzerinden ger�
 
 ## Ödev 4
 
+<br>
+
 >1.film tablosunda bulunan replacement_cost sütununda bulunan birbirinden farklı değerleri sıralayınız.
 
 > `SELECT DISTINCT(replacement_cost) FROM film;`
@@ -127,6 +127,35 @@ Aşağıdaki sorgu senaryolarını dvdrental örnek veri tabanı üzerinden ger�
 >5.city tablosundaki şehir isimlerinin kaç tanesi 'R' veya r karakteri ile biter?
 
 > `SELECT COUNT(*) FROM city WHERE city ILIKE '%R';`
+
+<br>
+<hr>
+
+## Ödev 5
+
+<br>
+
+>1.film tablosunda bulunan ve film ismi (title) 'n' karakteri ile biten en uzun (length) 5 filmi sıralayınız.
+
+>`SELECT * FROM film WHERE title LIKE '%n' ORDER BY length DESC 
+LIMIT 5;`
+
+<br>
+
+>2.film tablosunda bulunan ve film ismi (title) 'n' karakteri ile biten en kısa (length) ikinci 5 filmi sıralayınız.
+
+> `SELECT * FROM film WHERE title LIKE '%n' ORDER BY length ASC
+OFFSET 5
+LIMIT 5;`
+
+<br>
+
+
+>3.customer tablosunda bulunan last_name sütununa göre azalan yapılan sıralamada store_id 1 olmak koşuluyla ilk 4 veriyi sıralayınız.
+
+
+>`SELECT * FROM CUSTOMER WHERE store_id=1 ORDER BY last_name DESC LIMIT 4;`
+
 
 <br>
 <hr>
