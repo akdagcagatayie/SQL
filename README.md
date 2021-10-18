@@ -162,6 +162,8 @@ LIMIT 5;`
 
 ## Ödev 6
 
+<BR>
+
 >1.film tablosunda bulunan rental_rate sütunundaki değerlerin ortalaması nedir?
 
 >`select avg(rental_rate) from film;`
@@ -184,6 +186,44 @@ LIMIT 5;`
 
 >`SELECT COUNT(DISTINCT(replacement_cost)) FROM film where length > 150;`
 
+
+<br>
+<hr>
+
+## Ödev 7
+
+<br>
+
+>1.film tablosunda bulunan filmleri rating değerlerine göre gruplayınız.
+
+> `SELECT rating , COUNT(*) FROM film
+GROUP BY rating;`
+
+<br>
+
+>2.film tablosunda bulunan filmleri replacement_cost sütununa göre grupladığımızda film sayısı 50 den fazla olan replacement_cost değerini ve karşılık gelen film sayısını sıralayınız.
+
+> `SELECT replacement_cost,COUNT(*) FROM film
+GROUP BY replacement_cost
+HAVING COUNT(*)>50;`
+
+<br>
+
+>3.customer tablosunda bulunan store_id değerlerine karşılık gelen müşteri sayılarını nelerdir? 
+
+>`SELECT store_id,COUNT(*) FROM customer
+group by store_id;`
+
+
+<br>
+
+
+>4.city tablosunda bulunan şehir verilerini country_id sütununa göre gruplandırdıktan sonra en fazla şehir sayısı barındıra country_id bilgisini ve şehir sayısını paylaşınız.
+
+> `SELECT country_id,COUNT(*) FROM city
+group by country_id
+order by COUNT(*) DESC
+LIMIT 1;`
 
 <br>
 <hr>
