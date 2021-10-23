@@ -230,6 +230,8 @@ LIMIT 1;`
 
 ## Ödev 9
 
+<br>
+
 >1.city tablosu ile country tablosunda bulunan şehir (city) ve ülke (country) isimlerini birlikte görebileceğimiz INNER JOIN sorgusunu yazınız.
 
 > `SELECT city.city,country.country FROM city
@@ -246,11 +248,81 @@ ON payment.customer_id = customer.customer_id`
 
 <br>
 
->3customer tablosu ile rental tablosunda bulunan rental_id ile customer tablosundaki first_name ve last_name isimlerini birlikte görebileceğimiz INNER JOIN sorgusunu yazınız.
+>3.customer tablosu ile rental tablosunda bulunan rental_id ile customer tablosundaki first_name ve last_name isimlerini birlikte görebileceğimiz INNER JOIN sorgusunu yazınız.
 
 > `SELECT rental.rental_id , customer.first_name,customer.last_name FROM rental
 INNER JOIN customer 
 ON rental.customer_id = customer.customer_id;`
+
+<br>
+<hr>
+
+## Ödev 10
+
+<br>
+
+>1.city tablosu ile country tablosunda bulunan şehir (city) ve ülke (country) isimlerini birlikte görebileceğimiz LEFT JOIN sorgusunu yazınız.
+
+>`SELECT city.city , country.country FROM city
+LEFT JOIN country
+ON city.country_id = country.country_id`
+
+<br>
+
+>2.customer tablosu ile payment tablosunda bulunan payment_id ile customer tablosundaki first_name ve last_name isimlerini birlikte görebileceğimiz RIGHT JOIN sorgusunu yazınız.
+
+>`SELECT payment.payment_id,customer.first_name, customer.last_name FROM payment
+RIGHT JOIN customer
+ON payment.customer_id = customer.customer_id`
+
+<br>
+
+>3.customer tablosu ile rental tablosunda bulunan rental_id ile customer tablosundaki first_name ve last_name isimlerini birlikte görebileceğimiz FULL JOIN sorgusunu yazınız.
+
+>`SELECT rental.rental_id , customer.first_name,customer.last_name FROM rental
+full JOIN customer 
+ON rental.customer_id = customer.customer_id`
+
+<br>
+<hr>
+
+## Ödev 12
+
+<br>
+
+>1.film tablosunda film uzunluğu length sütununda gösterilmektedir. Uzunluğu ortalama film uzunluğundan fazla kaç tane film vardır?
+
+>`SELECT COUNT(*) FROM film
+WHERE length > 
+(
+	SELECT AVG(length) from film
+); `
+
+<br>
+
+>2.film tablosunda en yüksek rental_rate değerine sahip kaç tane film vardır?
+
+>`SELECT COUNT(*) FROM film WHERE rental_rate =
+(
+	SELECT MAX(rental_rate) FROM film
+);`
+
+<br>
+
+>3.film tablosunda en düşük rental_rate ve en düşük replacement_cost değerlerine sahip filmleri sıralayınız.
+
+>``SELECT COUNT(*) FROM filmWHERE rental_rate =(SELECT MIN      (rental_rate) FROM fil>)AND replacement_cost = (SELECT MIN(replacement_cost) From film); ``
+
+
+<br>
+
+>4.payment tablosunda en fazla sayıda alışveriş yapan müşterileri(customer) sıralayınız.
+
+>``SELECTpayment.customer_id,customer.first_namecustomerlast_name,COUNT(payment.customer_id) FROM payment INNER JOIN customer
+ON payment.customer_id = customer.customer_id
+GROUP BY payment.customer_id,customer.first_name,customer.last_name
+ORDER BY COUNT(payment.customer_id) DESC;
+; ``
 
 <br>
 <hr>
